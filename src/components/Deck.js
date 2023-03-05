@@ -25,11 +25,6 @@ export default function Deck(props) {
 
 const DeckCard = styled.div`
 margin-bottom: 97px;
-overflow: hidden;
-  scrollbar-width: none;
-  ::-webkit-scrollbar {
-display: none;
-}
 
 `
 

@@ -24,11 +24,6 @@ const ContainerApp = styled.div`
   background-color: #FB6B6B;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  scrollbar-width: none;
-  ::-webkit-scrollbar {
-display: none;
-}
 `;
 
 
