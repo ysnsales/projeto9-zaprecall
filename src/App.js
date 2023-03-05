@@ -1,3 +1,4 @@
+import Start from "./components/Start"
 import Top from "./components/Top"
 import Deck from "./components/Deck"
 import Bottom from "./components/Bottom"
@@ -9,13 +10,26 @@ import { useState } from "react"
 export default function App() {
 
   const [contador, setContador] = useState(0);
+  const [iniciar, setIniciar] = useState(true)
 
-  return(
-    <ContainerApp>
-    <Top />
-    <Deck contador={contador} setContador={setContador}/>
-    <Bottom contador={contador} setContador={setContador}/>
-    </ContainerApp>
+  return (
+    <>
+
+      {iniciar ?
+        
+          <Start iniciar={iniciar} setIniciar={setIniciar}/> 
+          :
+          <ContainerApp>
+            <Top />
+            <Deck contador={contador} setContador={setContador} />
+            <Bottom contador={contador} setContador={setContador} />
+          </ContainerApp>
+        }
+
+
+
+    </>
+
   )
 
 }
