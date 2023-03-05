@@ -40,12 +40,12 @@ export default function Card(props) {
                         <button
                             data-test="partial-btn"
                             style={{ background: "#FF922E" }}
-                            onClick={() => Fim("#FF922E", "./assets/icone_quase.png", "zap-icon")}>Quase não lembrei
+                            onClick={() => Fim("#FF922E", "./assets/icone_quase.png", "partial-icon")}>Quase não lembrei
                         </button>
                         <button
                             data-test="zap-btn"
                             style={{ background: "#2FBE34" }}
-                            onClick={() => Fim("#2FBE34", "./assets/icone_certo.png", "partial-icon")}>Zap!
+                            onClick={() => Fim("#2FBE34", "./assets/icone_certo.png", "zap-icon")}>Zap!
                         </button>
                     </div>
                 </RespostaCard>
