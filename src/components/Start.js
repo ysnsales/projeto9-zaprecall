@@ -5,7 +5,7 @@ export default function Start(props){
         <StartRecall>
             <img src="./assets/logo.png" />
             <p>ZapRecall</p>
-            <button onClick={() => props.setIniciar(false)}>Iniciar Recall</button>
+            <button data-test="start-btn" onClick={() => props.setIniciar(false)}>Iniciar Recall</button>
         </StartRecall>
     )
 }
