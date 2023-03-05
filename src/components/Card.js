@@ -10,36 +10,42 @@ export default function Card(props) {
     const [displayImg, setDisplayImg] = useState("none")
     const [imagemFim, setImagemFim] = useState("")
     const [respondeu, setRespondeu] = useState(false)
+    const [datatest, setDatatest] = useState("")
 
 
 
-    function Fim(cor, imagem) {
+    function Fim(cor, imagem, icone) {
         setCor(cor);
         setDisplay("none");
         setDisplayImg("inline");
         setImagemFim(imagem);
+        setDatatest(icone)
         setPergunta(false);
         setResposta(false);
         setRespondeu(true);
+
         props.setContador(props.contador + 1)
     }
     return (
         <>
             {resposta ?
                 <RespostaCard>
-                    <p>{props.card.answer}</p>
+                    <p data-test="flashcard-text">{props.card.answer}</p>
                     <div>
                         <button
-                            style={{ background: "#FF3030" }} 
-                            onClick={() => Fim("#FF3030", "./assets/icone_erro.png")}>Não lembrei
+                            data-test="no-btn"
+                            style={{ background: "#FF3030" }}
+                            onClick={() => Fim("#FF3030", "./assets/icone_erro.png", "no-icon")}>Não lembrei
                         </button>
                         <button
-                            style={{ background: "#FF922E" }} 
-                            onClick={() => Fim("#FF922E", "./assets/icone_quase.png")}>Quase não lembrei
+                            data-test="partial-btn"
+                            style={{ background: "#FF922E" }}
+                            onClick={() => Fim("#FF922E", "./assets/icone_quase.png", "zap-icon")}>Quase não lembrei
                         </button>
                         <button
-                            style={{ background: "#2FBE34" }} 
-                            onClick={() => Fim("#2FBE34", "./assets/icone_certo.png")}>Zap!
+                            data-test="zap-btn"
+                            style={{ background: "#2FBE34" }}
+                            onClick={() => Fim("#2FBE34", "./assets/icone_certo.png", "partial-icon")}>Zap!
                         </button>
                     </div>
                 </RespostaCard>
@@ -47,14 +53,14 @@ export default function Card(props) {
                 :
                 (pergunta ?
                     <PerguntaCard>
-                        <p>{props.card.question}</p>
-                        <div><img src="./assets/seta_virar.png" alt="seta" onClick={() => setResposta(true)} /> </div>
+                        <p data-test="flashcard-text">{props.card.question}</p>
+                        <div data-test="turn-btn"><img src="./assets/seta_virar.png" alt="seta" onClick={() => setResposta(true)} /> </div>
                     </PerguntaCard>
                     :
                     <FlashCard respondeu={respondeu}>
-                        <p style={{ color: cor }}>Pergunta {props.i + 1}</p>
-                        <ion-icon style={{ display: display }} name="play-outline" onClick={() => setPergunta(true)} ></ion-icon>
-                        <img style={{ display: displayImg }} src={imagemFim} />
+                        <p data-test="flashcard-text" style={{ color: cor }}>Pergunta {props.i + 1}</p>
+                        <ion-icon data-test="play-btn" style={{ display: display }} name="play-outline" onClick={() => setPergunta(true)} ></ion-icon>
+                        <img data-test={datatest} style={{ display: displayImg }} src={imagemFim} />
                     </FlashCard>)
 
             }

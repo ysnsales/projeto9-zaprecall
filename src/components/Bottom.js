@@ -4,7 +4,7 @@ import cards from "./cards"
 export default function Bottom(props) {
     return (
         <>
-            <BottomBar>
+            <BottomBar data-test="footer">
                 <p>{props.contador}/{cards.length} CONCLUÍDOS</p>
             </BottomBar>
         </>
