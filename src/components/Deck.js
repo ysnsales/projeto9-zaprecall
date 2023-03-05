@@ -10,7 +10,6 @@ export default function Deck(props) {
         <DeckCard>
             {cards.map((card, i) => (
                 <Card
-                    data-test="flashcard"
                     key={i}
                     i={i}
                     card={card}

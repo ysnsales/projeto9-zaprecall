@@ -29,7 +29,7 @@ export default function Card(props) {
     return (
         <>
             {resposta ?
-                <RespostaCard>
+                <RespostaCard data-test="flashcard">
                     <p data-test="flashcard-text">{props.card.answer}</p>
                     <div>
                         <button
@@ -52,12 +52,12 @@ export default function Card(props) {
 
                 :
                 (pergunta ?
-                    <PerguntaCard>
+                    <PerguntaCard data-test="flashcard">
                         <p data-test="flashcard-text">{props.card.question}</p>
                         <div data-test="turn-btn"><img src="./assets/seta_virar.png" alt="seta" onClick={() => setResposta(true)} /> </div>
                     </PerguntaCard>
                     :
-                    <FlashCard respondeu={respondeu}>
+                    <FlashCard data-test="flashcard" respondeu={respondeu}>
                         <p data-test="flashcard-text" style={{ color: cor }}>Pergunta {props.i + 1}</p>
                         <ion-icon data-test="play-btn" style={{ display: display }} name="play-outline" onClick={() => setPergunta(true)} ></ion-icon>
                         <img data-test={datatest} style={{ display: displayImg }} src={imagemFim} />
