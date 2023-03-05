@@ -111,6 +111,7 @@ background-color: #FFFFD4;
         line-height: 14px;
         color: #FFFFFF;
     }
+
 `
 const PerguntaCard = styled.div`
 height: 101px;

@@ -29,6 +29,11 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
     background-color: #FB6B6B;
+	overflow: hidden;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+display: none;
+}
 }
 ol, ul {
 	list-style: none;
