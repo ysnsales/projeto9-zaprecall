@@ -4,17 +4,40 @@ import { useState } from "react"
 export default function Card(props) {
 
     const [pergunta, setPergunta] = useState(false);
-    const [resposta, setResposta] = useState(false)
-
+    const [resposta, setResposta] = useState(false);
+    const [cor, setCor] = useState(" #333333");
+    const [display, setDisplay] = useState("inline")
+    const [displayImg, setDisplayImg] = useState("none")
+    const [imagemFim, setImagemFim] = useState("")
+    const [respondeu, setRespondeu] = useState(false)
+    
+    function Fim(cor, imagem) {
+        setCor(cor);
+        setDisplay("none");
+        setDisplayImg("inline");
+        setImagemFim(imagem)
+        setPergunta(false);
+        setResposta(false)
+        setRespondeu(true)
+    }
     return (
         <>
             {resposta ?
                 <RespostaCard>
                     <p>{props.card.answer}</p>
                     <div>
-                        <button style={{background: "#FF3030"} }>Não lembrei</button>
-                        <button style={{background: "#FF922E"}}>Quase não lembrei</button>
-                        <button style={{background: "#2FBE34"}}>Zap!</button>
+                        <button
+                            style={{ background: "#FF3030" }} 
+                            onClick={() => Fim("#FF3030", "./assets/icone_erro.png")}>Não lembrei
+                        </button>
+                        <button
+                            style={{ background: "#FF922E" }} 
+                            onClick={() => Fim("#FF922E", "./assets/icone_quase.png")}>Quase não lembrei
+                        </button>
+                        <button
+                            style={{ background: "#2FBE34" }} 
+                            onClick={() => Fim("#2FBE34", "./assets/icone_certo.png")}>Zap!
+                        </button>
                     </div>
                 </RespostaCard>
 
@@ -25,9 +48,10 @@ export default function Card(props) {
                         <div><img src="./assets/seta_virar.png" alt="seta" onClick={() => setResposta(true)} /> </div>
                     </PerguntaCard>
                     :
-                    <FlashCard>
-                        <p>Pergunta {props.i + 1}</p>
-                        <ion-icon name="play-outline" onClick={() => setPergunta(true)} ></ion-icon>
+                    <FlashCard respondeu={respondeu}>
+                        <p style={{ color: cor }}>Pergunta {props.i + 1}</p>
+                        <ion-icon style={{ display: display }} name="play-outline" onClick={() => setPergunta(true)} ></ion-icon>
+                        <img style={{ display: displayImg }} src={imagemFim} />
                     </FlashCard>)
 
             }
@@ -61,6 +85,8 @@ background-color: #FFFFD4;
     }
     div {
         margin: 0 auto;
+        display: flex;
+        justify-content: center;
     }
     button {
         width: 85px;
@@ -132,6 +158,8 @@ background-color: white;
         font-size: 16px;
         line-height: 19px;
         color: #333333;
+
+    text-decoration: ${props => props.respondeu ? "line-through" : "none"};
     }
 
     ion-icon {

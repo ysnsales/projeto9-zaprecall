@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import Deck from "./Deck"
 
 export default function Bottom() {
     return (
