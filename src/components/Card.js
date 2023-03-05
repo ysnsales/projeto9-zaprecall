@@ -10,15 +10,18 @@ export default function Card(props) {
     const [displayImg, setDisplayImg] = useState("none")
     const [imagemFim, setImagemFim] = useState("")
     const [respondeu, setRespondeu] = useState(false)
-    
+
+
+
     function Fim(cor, imagem) {
         setCor(cor);
         setDisplay("none");
         setDisplayImg("inline");
-        setImagemFim(imagem)
+        setImagemFim(imagem);
         setPergunta(false);
-        setResposta(false)
-        setRespondeu(true)
+        setResposta(false);
+        setRespondeu(true);
+        props.setContador(props.contador + 1)
     }
     return (
         <>

@@ -1,11 +1,11 @@
 import styled from "styled-components"
-import Deck from "./Deck"
+import cards from "./cards"
 
-export default function Bottom() {
+export default function Bottom(props) {
     return (
         <>
             <BottomBar>
-                <p>0/4 CONCLUIDOS</p>
+                <p>{props.contador}/{cards.length} CONCLUÍDOS</p>
             </BottomBar>
         </>
     )

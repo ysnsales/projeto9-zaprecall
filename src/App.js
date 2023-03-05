@@ -1,17 +1,20 @@
 import Top from "./components/Top"
 import Deck from "./components/Deck"
-import Card from "./components/Card"
 import Bottom from "./components/Bottom"
 
 import styled from "styled-components"
+import { useState } from "react"
 
 
 export default function App() {
+
+  const [contador, setContador] = useState(0);
+
   return(
     <ContainerApp>
     <Top />
-    <Deck />
-    <Bottom />
+    <Deck contador={contador} setContador={setContador}/>
+    <Bottom contador={contador} setContador={setContador}/>
     </ContainerApp>
   )
 
